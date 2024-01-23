@@ -86,7 +86,7 @@
                 <div class="modal-body">
                     <button type="button" class="btn-close" style="float: right;" data-bs-dismiss="modal" aria-label="Close"></button>
                     <br>
-                    <img class="d-flex align-items-center justify-content-center mx-auto" src="../img/belum.png" alt="" width="40%">
+                    <img class="d-flex align-items-center justify-content-center mx-auto" src="../public/image/belum.png" alt="" width="40%">
                     <b class="text-center mt-5">
                         <h2 class="text-danger">BAYAR KAS WOY!!</h2>
                     </b>
@@ -104,7 +104,7 @@
                 <div class="modal-body">
                     <button type="button" class="btn-close" style="float: right;" data-bs-dismiss="modal" aria-label="Close"></button>
                     <br>
-                    <img class="d-flex align-items-center justify-content-center mx-auto" src="../img/sudah.png" alt="" width="40%">
+                    <img class="d-flex align-items-center justify-content-center mx-auto" src="../public/image/sudah.png" alt="" width="40%">
                     <b class="text-center mt-5">
                         <h2 class="text-primary">SALAM YANG MULIA</h2>
                     </b>
@@ -125,7 +125,7 @@
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
         <div class="offcanvas-header">
-            <img src="../img/KAS WOY 1;2-01.png" alt="Kas Woy1" style="width: 40%;">
+            <img src="../public/image/kaswoy1.png" alt="Kas Woy1" style="width: 40%;">
         </div>
         <div style="margin-right: -15rem" class="offcanvas-body" style="opacity: 0.7;">
             <ul class="navbar-nav">
@@ -135,7 +135,7 @@
                 <li class="nav-item"><a class="nav-link" href="home/tagihan" style="width: 25%;">Cek Tagihan</a></li>
             </ul>
 
-            <a href="login" class="btn btn-primary" style="margin-top: 55%;">
+            <a href="home/login" class="btn btn-primary" style="margin-top: 55%;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z" />
                     <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
@@ -166,7 +166,7 @@
             <div class="empat col-md col-12" style="background-color: white; border-radius: 12px;">
                 <div class="d-flex justify-content-between align-items-center">
                     <h5 class="m-0">Riwayat Transaksi</h5>
-                    <a href="riwayattransaksi.html">See all</a>
+                    <a href="home/riwayat">See all</a>
                 </div>
                 <table class="table table-borderless mb-0 ">
                     <tr class="d-flex justify-content-evenly">
@@ -214,7 +214,7 @@
 
                 <div class="d-flex justify-content-between align-items-center">
                     <h5 class="m-0">Sudah Bayar</h5>
-                    <a href="listPeserta.html">See all</a>
+                    <a href="home/list">See all</a>
                 </div>
                 <div class="container pt-5 mt-2">
                     <div class="row row-cols-1 row-cols-md-3 g-3 mx-auto">

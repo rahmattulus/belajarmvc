@@ -2,8 +2,8 @@
 
   <nav class="navbar navbar-lg navbar-light">
     <div class="container d-flex justify-content-between align-items-center">
-      <a class=" ms-0" href="landingPage.html">
-        <img class="logo" src="../img/KAS WOY 1;2-01.png" alt="" style="width: 150px;">
+      <a class=" ms-0" href="../">
+        <img class="logo" src="../../public/image/kaswoy1.png" alt="" style="width: 150px;">
       </a>
       <div class="d-flex align-items-center">
         <div class="text-end me-2">

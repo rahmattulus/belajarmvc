@@ -4,40 +4,42 @@ class Home extends Controller{
 
     // public $data = ['title' => 'siswa'];
 
-    public function index($nama = "Agus", $hobi = "Memancing"){
+    public function index(){
         // echo "hallo";
-        // $data['title'] = 'siswa';
-        $this->view("templates/header");
-        $this->view("home/index");
-        $this->view("templates/footer");
+        $data['title'] = 'KasWoy';
+        $this->view("templates/header", $data);
+        $this->view("home/index", $data);
+        $this->view("templates/footer", $data);
     }
 
-    public function login($nama = "Agus", $hobi = "Memancing"){
+    public function login(){
         // echo "hallo";
-        $this->view("templates/header");
-        $this->view("home/login");
-        $this->view("templates/footer");
+        $data['title'] = 'Log-In | KasWoy';
+        $this->view("templates/header", $data);
+        $this->view("home/login", $data);
+        $this->view("templates/footer", $data);
     }
 
     public function list(){
-        // echo "Ini Siswa";
-        // $data['nama']= 'Agusz';
-        $this->view("templates/header");
-        $this->view("home/list");
-        $this->view("templates/footer");
+        $data['title'] = 'List | KasWoy';
+        $this->view("templates/header", $data);
+        $this->view("home/list", $data);
+        $this->view("templates/footer", $data);
     }
 
-    public function riwayat($nama = "Agus", $hobi = "Memancing"){
+    public function riwayat(){
         // echo "hallo";
-        $this->view("templates/header");
-        $this->view("home/riwayat");
-        $this->view("templates/footer");
+        $data['title'] = 'riwayat | KasWoy';
+        $this->view("templates/header", $data);
+        $this->view("home/riwayat", $data);
+        $this->view("templates/footer", $data);
     }
-    public function tagihan($nama = "Agus", $hobi = "Memancing"){
+    public function tagihan(){
         // echo "hallo";
-        $this->view("templates/header");
-        $this->view("home/tagihan");
-        $this->view("templates/footer");
+        $data['title'] = 'Tagihan | KasWoy';
+        $this->view("templates/header", $data);
+        $this->view("home/tagihan", $data);
+        $this->view("templates/footer", $data);
     }
 
 }

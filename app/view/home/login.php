@@ -1,6 +1,6 @@
 <style>
     body {
-        background-image: url(../img/landing.png);
+        background-image: url(../../public/image/landing.png);
         height: 100vh;
         background-size: cover;
         background-repeat: no-repeat;
@@ -69,7 +69,7 @@
     <!-- <img src="img/landing.png" alt="" class="position-absolute top-0 start-0" style="z-index: -9;"> -->
     <div class="text-center">
         <div class="col-md-12">
-            <img class="yo" src="../img/logo kas woy 1;1-01.png" alt="">
+            <img class="yo" src="../../public/image/kaswoy1.png" alt="">
         </div>
 
     </div>
@@ -87,7 +87,7 @@
                     <div class="modal-body">
                         <button type="button" class="btn-close" style="float: right;" data-bs-dismiss="modal" aria-label="Close"></button>
                         <br>
-                        <img class="d-flex align-items-center justify-content-center mx-auto mb-5" src="../img/infokw.png" alt="" width="40%">
+                        <img class="d-flex align-items-center justify-content-center mx-auto mb-5" src="../../public/image/info.png" alt="" width="40%">
                         <b class="text-center mt-5">
                             <h2 class="m-0 mt-2">KAS WOY?</h2>
                         </b>
@@ -106,7 +106,7 @@
 
     <div class="container mx-auto mt-4">
         <h2>Selamat Datang</h2>
-        <form action="index" class="form-registrasi">
+        <form action="../../public" class="form-registrasi">
             <div class="login">
                 <div class="input">
                     <input class="form-control form-control-sm" type="text" placeholder="username" aria-label=".form-control-sm example">
