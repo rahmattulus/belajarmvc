@@ -5,10 +5,6 @@
 
     @import url('https://fonts.googleapis.com/css2?family=Doppio+One&family=Inter&display=swap');
 
-    /* .atas{
-      
-    } */
-
     .table{
         border-radius: 10px;
     }

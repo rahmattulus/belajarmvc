@@ -15,6 +15,7 @@ class Home extends Controller{
     public function login(){
         // echo "hallo";
         $data['title'] = 'Log-In | KasWoy';
+        $data['login'] = $this->model('Login_model')->getAllanggota();
         $this->view("templates/header", $data);
         $this->view("home/login", $data);
         $this->view("templates/footer", $data);

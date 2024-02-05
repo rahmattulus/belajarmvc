@@ -76,7 +76,7 @@
 
     <div class="position-absolute top-0 end-0 p-5">
         <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="fas fa-info-circle fa-2x fa-inverse" style="cursor: pointer;"></i>
+            <i class="fa fa-info fa-sm  " style="--fa-primary-opacity: 0.60;cursor: pointer;"></i>
         </a>
 
         <!-- Modal -->
@@ -106,10 +106,10 @@
 
     <div class="container mx-auto mt-4">
         <h2>Selamat Datang</h2>
-        <form action="../../public" class="form-registrasi">
+        <form action="" method="post" class="form-registrasi">
             <div class="login">
                 <div class="input">
-                    <input class="form-control form-control-sm" type="text" placeholder="username" aria-label=".form-control-sm example">
+                    <input class="form-control form-control-sm" type="text" name="username" id="username" placeholder="username" aria-label=".form-control-sm example">
 
                     <input class="form-control form-control-sm" type="password" placeholder="password" aria-label=".form-control-sm example">
 
