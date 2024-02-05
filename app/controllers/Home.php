@@ -35,11 +35,18 @@ class Home extends Controller{
         $this->view("home/riwayat", $data);
         $this->view("templates/footer", $data);
     }
-    public function tagihan(){
+    public function pemasukan(){
         // echo "hallo";
         $data['title'] = 'Tagihan | KasWoy';
         $this->view("templates/header", $data);
-        $this->view("home/tagihan", $data);
+        $this->view("home/pemasukan", $data);
+        $this->view("templates/footer", $data);
+    }
+    public function pengluaran(){
+        // echo "hallo";
+        $data['title'] = 'Tagihan | KasWoy';
+        $this->view("templates/header", $data);
+        $this->view("home/pengluaran", $data);
         $this->view("templates/footer", $data);
     }
 
