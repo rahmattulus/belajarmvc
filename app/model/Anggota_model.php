@@ -12,4 +12,5 @@ class Anggota_model{
         $this->db->query("SELECT * FROM " .$this->table);
         return $this->db->resultSet();
     }
+    
 }

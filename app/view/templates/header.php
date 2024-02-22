@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["login"])) {
+    echo "<script>
+            window.location.href = 'http://localhost/kaswoymvc/public/home/login';
+            alert('Anda siapa | LOG-IN DULU!!');
+          </script>";
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +22,6 @@
     <link rel="shortcut icon" href="http://localhost/kaswoymvc/public/image/kaswoy2.png" type="image/x-icon">
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="http://localhost/kaswoymvc/public/css/bootstrap.min.css" crossorigin="anonymous">
-    <script src="http://localhost/kaswoymvc/public/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" >

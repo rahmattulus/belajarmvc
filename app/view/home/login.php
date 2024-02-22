@@ -1,3 +1,22 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <?= $data['title']?>
+  </title>
+    <link rel="shortcut icon" href="http://localhost/kaswoymvc/public/image/kaswoy2.png" type="image/x-icon">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="http://localhost/kaswoymvc/public/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" >
+</head>
 <style>
     body {
         background-image: url(../../public/image/landing.png);
@@ -9,16 +28,8 @@
 
     .yo {
         width: 220px;
-        /* margin-bottom: 10px;
-    margin-left: 43.4%;
-    margin-top: 2%; */
     }
 
-    /* a {
-    margin-top: 80px;
-    margin-left: 30%;
-    
-} */
     .container {
         width: 30%;
         min-width: 385px;
@@ -71,16 +82,16 @@
         <div class="col-md-12">
             <img class="yo" src="../../public/image/kaswoy1.png" alt="">
         </div>
-
     </div>
 
+
     <div class="position-absolute top-0 end-0 p-5">
-        <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <a data-bs-toggle="modal" data-bs-target="#info">
             <i class="fa fa-info fa-sm  " style="--fa-primary-opacity: 0.60;cursor: pointer;"></i>
         </a>
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="info" tabindex="-1" aria-labelledby="infoLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm">
                 <div class="modal-content">
 
@@ -108,16 +119,24 @@
         <h2>Selamat Datang</h2>
         <form action="" method="post" class="form-registrasi">
             <div class="login">
+                <?php if (isset($_SESSION['error_message'])) { ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong><?= $_SESSION['error_message'] ?></strong> 
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                <?php unset($_SESSION['error_message']);
+                } ?>
                 <div class="input">
                     <input class="form-control form-control-sm" type="text" name="username" id="username" placeholder="username" aria-label=".form-control-sm example">
 
-                    <input class="form-control form-control-sm" type="password" placeholder="password" aria-label=".form-control-sm example">
+                    <input class="form-control form-control-sm" type="password" name="password" id="password" placeholder="password" aria-label=".form-control-sm example">
 
-                    <input class="form-control form-control-sm mx-auto" type="submit" value="Masuk">
+                    <input class="form-control form-control-sm mx-auto" type="submit" name="login" value="Masuk">
                 </div>
             </div>
         </form>
     </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    

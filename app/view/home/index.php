@@ -1,3 +1,4 @@
+
 <style>
     body {
         background-color: #D1F6F6;
@@ -52,15 +53,6 @@
         justify-content: flex-end;
         flex-shrink: 0;
     }
-
-    /* @media (min-widh : 500px) {
-    .satu{
-      height: 25vh;
-    }
-    .dua{
-      height: 7vh;
-    }
-  } */
 </style>
 
 <body>
@@ -71,7 +63,9 @@
             </button>
             <div class="d-flex align-items-center">
                 <div class="text-end me-2">
-                    <p class="m-0">Nama</p>
+                    <p class="m-0"><b>
+                            <?= $_SESSION['username'] ?>
+                        </b></p>
                     <p class="m-0">XI PPLG 1</p>
                 </div>
                 <i class="">
@@ -125,19 +119,26 @@
 
 
 
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav" style="max-width: 30%;">
         <div class="offcanvas-header">
             <img src="../public/image/kaswoy1.png" alt="Kas Woy1" style="width: 40%;">
         </div>
-        <div style="margin-right: -15rem" class="offcanvas-body" style="opacity: 0.7;">
+        <div class="offcanvas-body" style="opacity: 0.7;">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="" style="width: 25%;">Beranda</a></li>
-                <li class="nav-item"><a class="nav-link" href="home/riwayat" style="width: 25%;">Riwayat Transaksi</a></li>
-                <li class="nav-item"><a class="nav-link" href="home/list" style="width: 25%;">Sudah Bayar</a></li>
-                <li class="nav-item"><a class="nav-link" href="home/tagihan" style="width: 25%;">Cek Tagihan</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link" href="home/riwayat">Riwayat Transaksi</a>
+                </li>
+                <!-- <li class="nav-item"><a class="nav-link" href="home/list" >Sudah Bayar</a></li> -->
+
+                <?php if ($_SESSION['user_level'] == 1 || $_SESSION['user_level'] == 2) : ?>
+                    <li class="nav-item"><a class="nav-link" href="home/pemasukan">Pemasukan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="home/pengeluaran">Pengluaran</a></li>
+                    <li class="nav-item"><a class="nav-link" href="home/admin">Admin</a></li>
+                <?php endif; ?>
+
             </ul>
 
-            <a href="home/login" class="btn btn-primary" style="margin-top: 55%;">
+            <a href="home/logout" class="btn btn-primary" style="position: fixed; bottom: 0; margin: bottom 4px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z" />
                     <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
@@ -148,21 +149,21 @@
     </div>
 
     <div class="container">
-        <div class="satu  container-md d-flex justify-content-center align-items-center" style="height: 40vh;">
+        <div class="satu  container-md d-flex justify-content-center align-items-center" style="height: 30vh;">
             <div class="">
                 <p>Saldo</p>
                 <h2>Rp 500.000</h2>
             </div>
         </div>
 
-        <div class="dua container-md d-flex justify-content-center align-items-center" style="height: 10vh;">
+        <div class="dua container-md d-flex justify-content-center align-items-center" style="height: 7vh;">
             <p>Rp 200.000</p>
             <p>Dana terpakai bulan ini</p>
         </div>
     </div>
 
 
-    <div class="container">
+    <div class="container p-2" style="min-height: 40vh;">
         <!-- Riwayat -->
         <div class="tiga row g-2 justify-content-evenly mx-auto">
             <div class="empat col-md col-12" style="background-color: white; border-radius: 12px;">
@@ -215,82 +216,8 @@
             <div class="empat col-md col-12" style="background-color: white; border-radius: 12px;">
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="m-0">Sudah Bayar</h5>
-                    <a href="home/list">See all</a>
+                    <h5 class="m-0">Tagihan</h5>
                 </div>
-                <div class="container pt-5 mt-2">
-                    <!-- <div class="row row-cols-1 row-cols-md-3 g-3 mx-auto">
-                        <div class="col-md-2 col-sm-3 col-6">
-                            <div class="d-flex align-items-center justify-content-center mx-auto">
-                                <button type="button" class="btn btn-lg rounded-circle position-relative  " data-bs-toggle="popover" data-bs-title="BAYAR WOY!!" style="border: none;">
-                                    <i class="fa fa-user fa-3x"></i>
-                                    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle">
-                                        <span class="visually-hidden">New alerts</span>
-                                    </span>
-                                    <p class="text-center mt-0">Nama</p>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-3 col-6">
-                            <div class="d-flex align-items-center justify-content-center mx-auto">
-                                <button type="button" class="btn btn-lg rounded-circle position-relative  " data-bs-toggle="popover" data-bs-title="BAYAR WOY!!" style="border: none;">
-                                    <i class="fa fa-user fa-3x"></i>
-                                    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle">
-                                        <span class="visually-hidden">New alerts</span>
-                                    </span>
-                                    <p class="text-center mt-0">Nama</p>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-3 col-6">
-                            <div class="d-flex align-items-center justify-content-center mx-auto">
-                                <button type="button" class="btn btn-lg rounded-circle position-relative  " data-bs-toggle="popover" data-bs-title="BAYAR WOY!!" style="border: none;">
-                                    <i class="fa fa-user fa-3x"></i>
-                                    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle">
-                                        <span class="visually-hidden">New alerts</span>
-                                    </span>
-                                    <p class="text-center mt-0">Nama</p>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-3 col-6">
-                            <div class="d-flex align-items-center justify-content-center mx-auto">
-                                <button type="button" class="btn btn-lg rounded-circle position-relative  " data-bs-toggle="popover" data-bs-title="BAYAR WOY!!" style="border: none;">
-                                    <i class="fa fa-user fa-3x"></i>
-                                    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle">
-                                        <span class="visually-hidden">New alerts</span>
-                                    </span>
-                                    <p class="text-center mt-0">Nama</p>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-3 col-6">
-                            <div class="d-flex align-items-center justify-content-center mx-auto">
-                                <button type="button" class="btn btn-lg rounded-circle position-relative  " data-bs-toggle="popover" data-bs-title="BAYAR WOY!!" style="border: none;">
-                                    <i class="fa fa-user fa-3x"></i>
-                                    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle">
-                                        <span class="visually-hidden">New alerts</span>
-                                    </span>
-                                    <p class="text-center mt-0">Nama</p>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-3 col-6">
-                            <div class="d-flex align-items-center justify-content-center mx-auto">
-                                <button type="button" class="btn btn-lg rounded-circle position-relative  " data-bs-toggle="popover" data-bs-title="BAYAR WOY!!" style="border: none;">
-                                    <i class="fa fa-user fa-3x"></i>
-                                    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle">
-                                        <span class="visually-hidden">New alerts</span>
-                                    </span>
-                                    <p class="text-center mt-0">Nama</p>
-                                </button>
-                            </div>
-                        </div>
-
-                    </div> -->
-                </div>
-
-
                 <div class="container list d-flex justify-content-center align-items-center">
 
                 </div>
@@ -298,25 +225,11 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
-
-    <script>
-        // Cek apakah modal sudah pernah dibuka sebelumnya
-        // var isModalOpened = localStorage.getItem('modalOpened');
-
-        // Jika modal belum pernah dibuka, maka buka modal
-        // if (!isModalOpened) {
-        //   window.onload = function() {
-        //     var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
-        //     myModal.show();
-        //   };
-        //   localStorage.setItem('modalOpened', 'true');
-        // }
-
+    <!-- <script>
         // Aktifkan modal saat halaman dimuat
-        window.onload = function() {
+        window.onload = function () {
             var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
             myModal.show();
         };
-    </script>
+    </script> -->
