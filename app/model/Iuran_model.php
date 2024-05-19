@@ -17,8 +17,9 @@ class Iuran_model
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Ambil nilai dari form
             $bulan = $_POST['bulan'];
-            $status = $_POST['status']; // Ini akan berisi status week 1 sampai week 4 untuk setiap anggota
+            $status = $_POST['status']; 
 
+            
             try {
                 // Lakukan iterasi untuk setiap anggota
                 foreach ($status as $id_siswa => $minggu) {
@@ -41,14 +42,14 @@ class Iuran_model
 
                         var_dump($sudah_bayar);
                         if ($sudah_bayar === "Sudah Bayar") {
-                            $tanggal = date('d-m-Y');
+                            $tanggal = date('d F Y');
                             $nominal = 2000;
                             $keterangan = "Iuran Rutin";
                             $this->db->query("INSERT INTO pemasukan (tanggal, keterangan, nominal) VALUES (:tanggal,  :keterangan, :nominal)");
                             $this->db->bind(":tanggal", $tanggal);
                             $this->db->bind(":nominal", $nominal);
                             $this->db->bind(":keterangan", $keterangan);
-                            var_dump($tanggal, $nominal, $keterangan);
+                            // var_dump($tanggal, $nominal, $keterangan);
                              $this->db->execute();
                             
                             // if(!$result){
@@ -63,5 +64,11 @@ class Iuran_model
                 return "Error: " . $e->getMessage();
             }
         }
+    }
+
+    public function getDataIuran(){
+        $this->db->query("SELECT * FROM `iuran` RIGHT JOIN `anggota` ON iuran.id_siswa = anggota.id");
+        // var_dump($sql);
+        return $this->db->resultSet();
     }
 }

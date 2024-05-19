@@ -1,4 +1,4 @@
-</body>
+
 <script src="http://localhost/kaswoymvc/public/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
 <!-- Alert Log-In -->
@@ -67,6 +67,14 @@
     });
 </script>
 
+<!-- // Fungsi untuk mengatur opsi bulan aktif sesuai dengan bulan saat ini -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const bulanSelect = document.getElementById('floatingSelect');
+        const bulanSekarang = new Date().getMonth(); // Mendapatkan bulan saat ini (0 - 11)
+        bulanSelect.selectedIndex = bulanSekarang + 1; // Indeks dimulai dari 1 karena ada opsi "Open this select Month"
+    });
+</script>
 
-
+</body>
 </html>

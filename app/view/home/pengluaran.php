@@ -1,4 +1,3 @@
-
 <style>
     body {
         background-color: #D1F6F6;
@@ -55,15 +54,26 @@
 
             <div class="container-fluid">
                 <div class="p-5 m-0">
-                    <form class="user">
+
+                    <?php if (isset($_SESSION['success_massage'])) : ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong><?= $_SESSION['success_massage'] ?></strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php endif ?>
+                    
+                    <form method="POST" action="pengeluaran" class="user">
                         <div class="form-group pb-3 ">
-                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Nominal">
+                            <input type="date" name="tanggal" class="form-control form-control-user" value="<?= date('Y-m-d'); ?>" id="exampleInputEmail" placeholder="">
                         </div>
                         <div class="form-group pb-3 ">
-                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Keterangan">
+                            <input type="text" name="nominal" class="form-control form-control-user" id="exampleInputEmail" placeholder="Nominal">
+                        </div>
+                        <div class="form-group pb-3 ">
+                            <input type="text" name="keterangan" class="form-control form-control-user" id="exampleInputEmail" placeholder="Keterangan">
                         </div>
                         <div class="d-grid gap-5 pt-3">
-                            <button class="btn btn-primary" type="button">Update</button>
+                            <button class="btn btn-primary" type="submit">Update</button>
                         </div>
                     </form>
                 </div>
@@ -72,87 +82,57 @@
 
 
             <div class="table p-3" style="background-color: #fff;">
-                <table class="main table text-center">
-                    <div class="form-floating mb-3" style="max-width: 35%;">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                            <option selected>Open this select Month</option>
-                            <option value="01">Januari</option>
-                            <option value="02">Februari</option>
-                            <option value="03">Maret</option>
-                            <option value="04">April</option>
-                            <option value="05">Mei</option>
-                            <option value="06">Juni</option>
-                            <option value="07">Juli</option>
-                            <option value="08">Agustus</option>
-                            <option value="09">September</option>
-                            <option value="10">Oktober</option>
-                            <option value="11">November</option>
-                            <option value="12">Desember</option>
-                        </select>
-                        <label for="floatingSelect">Pilih Bulan</label>
-                    </div>
+                <div class="form-floating mb-3" style="max-width: 35%;">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                        <?php
+                        $bulan = array(
+                            1 => "Januari",
+                            2 => "Februari",
+                            3 => "Maret",
+                            4 => "April",
+                            5 => "Mei",
+                            6 => "Juni",
+                            7 => "Juli",
+                            8 => "Agustus",
+                            9 => "September",
+                            10 => "Oktober",
+                            11 => "November",
+                            12 => "Desember"
+                        );
 
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
+                        for ($i = 1; $i <= 12; $i++) {
+                            echo '<option';
+                            if (date('n') == $i) {
+                                echo ' selected';
+                            }
+                            echo ' value="' . $i . '">' . $bulan[$i] . '</option>';
+                        }
+                        ?>
+                    </select>
+                    <label for="floatingSelect">Pilih Bulan</label>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Nominal</th>
+                                    <th>Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($data['get'] as $out) : ?>
                                     <tr>
-                                        <th>Tanggal</th>
-                                        <th>Nominal</th>
-                                        <th>Keterangan</th>
+                                        <td><?= date('d F Y', strtotime($out['tanggal'])) ?></td>
+                                        <td><?= 'Rp. '. number_format($out['nominal'], 0, ',', '.') ?></td>
+                                        <td><?= $out['keterangan'] ?></td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>13 Agustus 2023</td>
-                                        <td>150.000</td>
-                                        <td>Banner</td>
-                                    </tr>
-                                    <tr>
-                                        <td>14 Agustus 2023</td>
-                                        <td>10.000</td>
-                                        <td>Minuman karnaval</td>
-                                    </tr>
-                                    <tr>
-                                        <td>15 Agustus 2023</td>
-                                        <td>107.000</td>
-                                        <td>Lauk tumpeng</td>
-                                    </tr>
-                                    <tr>
-                                        <td>15 Agustus 2023</td>
-                                        <td>200.000</td>
-                                        <td>Nasi + Hiasan tumpeng</td>
-                                    </tr>
-                                    <tr>
-                                        <td>15 Agustus 2023</td>
-                                        <td>120.000</td>
-                                        <td>Ayam tumpeng</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7 September 2023</td>
-                                        <td>10.000</td>
-                                        <td>HVS</td>
-                                    </tr>
-                                    <tr>
-                                        <td>13 September 2023</td>
-                                        <td>14.000</td>
-                                        <td>Folio</td>
-                                    </tr>
-                                    <tr>
-                                        <td>35 September 2023</td>
-                                        <td>37.000</td>
-                                        <td>pepeleg sehat</td>
-                                    </tr>
-                                    <tr>
-                                        <td>30 September 2023</td>
-                                        <td>33.500</td>
-                                        <td>(P5 KPO) co card + print</td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
                     </div>
+                </div>
             </div>
         </div>
     </div>

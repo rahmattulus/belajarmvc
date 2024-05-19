@@ -1,4 +1,3 @@
-
 <style>
   body {
     background: #D1F6F6;
@@ -92,7 +91,7 @@
           <!-- <img src="" alt=""> -->
           <div class="text-center masuk">
             <h6 class="m-0">Pemasukan</h6>
-            <p>Rp 500.000</p>
+            <p>Rp. <?= number_format($data['total_pemasukan']['total_pemasukan'], 0, ',', '.') ?></p>
           </div>
         </td>
         <td class="">
@@ -107,14 +106,14 @@
           </svg>
           <div class="text-center keluar">
             <h6 class="m-0">Pengluaran</h6>
-            <p>Rp 250.000</p>
+            <p>Rp. <?= number_format($data['total_pengeluaran']['total_pengeluaran'], 0, ',', '.') ?></p>
           </div>
         </td>
       </tr>
     </table>
     <div class="d-flex justify-content-between mx-auto" id="selisih" style="max-height: 30px;">
-      <p class="ms-2" style="color: #7ABAF5;">Selisih</p>
-      <p class="me-2">Rp 250.000</p>
+      <p class="ms-2" style="color: #7ABAF5;">SALDO</p>
+      <p class="me-2">Rp. <?= number_format($data['saldo'], 0, ',', '.') ?></p>
     </div>
   </div>
 
@@ -151,26 +150,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>11 Sept 2120</td>
-              <td>Iuran rutin</td>
-              <td>1000000</td>
-            </tr>
-            <tr>
-              <td>11 Sept 2120</td>
-              <td>Iuran rutin</td>
-              <td>1000000</td>
-            </tr>
-            <tr>
-              <td>11 Sept 2120</td>
-              <td>Iuran rutin</td>
-              <td>1000000</td>
-            </tr>
-            <tr>
-              <td>11 Sept 2120</td>
-              <td>Iuran rutin</td>
-              <td>1000000</td>
-            </tr>
+            <?php foreach ($data['getpemasukan'] as $masuk) : ?>
+              <tr>
+                <td><?= date('d F Y', strtotime($masuk['tanggal'])) ?></td>
+                <td><?= 'Rp.' . number_format($masuk['nominal'], 0, ',', '.') ?></td>
+                <td><?= $masuk['keterangan'] ?></td>
+              </tr>
+            <?php endforeach ?>
           </tbody>
 
         </table>
@@ -205,42 +191,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>11 Sept 2120</td>
-              <td>Iuran rutin</td>
-              <td>1000000</td>
-            </tr>
-            <tr>
-              <td>11 Sept 2120</td>
-              <td>Iuran rutin</td>
-              <td>1000000</td>
-            </tr>
-            <tr>
-              <td>11 Sept 2120</td>
-              <td>Iuran rutin</td>
-              <td>1000000</td>
-            </tr>
-            <tr>
-              <td>11 Sept 2120</td>
-              <td>Iuran rutin</td>
-              <td>1000000</td>
-            </tr>
-            <tr>
-              <td>11 Sept 2120</td>
-              <td>Iuran rutin</td>
-              <td>1000000</td>
-            </tr>
-            <tr>
-              <td>11 Sept 2120</td>
-              <td>Iuran rutin</td>
-              <td>1000000</td>
-            </tr>
+            <?php foreach ($data['getpengeluaran'] as $out) : ?>
+              <tr>
+                <td><?= date('d F Y', strtotime($out['tanggal'])) ?></td>
+                <td><?= 'Rp. ' . number_format($out['nominal'], 0, ',', '.') ?></td>
+                <td><?= $out['keterangan'] ?></td>
+              </tr>
+            <?php endforeach ?>
           </tbody>
         </table>
       </div>
-
     </div>
-
   </div>
 
 

@@ -83,15 +83,15 @@
                                         <option value="Januari">Januari</option>
                                         <option value="Februari">Februari</option>
                                         <option value="Maret">Maret</option>
-                                        <option value="04">April</option>
-                                        <option value="05">Mei</option>
-                                        <option value="06">Juni</option>
-                                        <option value="07">Juli</option>
-                                        <option value="08">Agustus</option>
-                                        <option value="09">September</option>
-                                        <option value="10">Oktober</option>
-                                        <option value="11">November</option>
-                                        <option value="12">Desember</option>
+                                        <option value="April">April</option>
+                                        <option value="Mei">Mei</option>
+                                        <option value="Juni">Juni</option>
+                                        <option value="Juli">Juli</option>
+                                        <option value="Agustus">Agustus</option>
+                                        <option value="September">September</option>
+                                        <option value="Oktober">Oktober</option>
+                                        <option value="November">November</option>
+                                        <option value="Desember">Desember</option>
                                     </select>
                                     <label for="floatingSelect">Pilih Bulan</label>
                                 </div>
@@ -106,27 +106,23 @@
                                         <th class="text-center">Week 4</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
-                                    <?php foreach ($data['anggota'] as $key) { ?>
+                                    <?php foreach ($data['getIuran'] as $key) { ?>
                                         <input type="hidden" name="id_siswa" value="<?= $key['id'] ?>">
                                         <tr>
                                             <td><?= $key['nama'] ?></td>
-                                            <!-- Letakkan input hidden di dalam kolom yang sama -->
-                                            <td>
-                                                <input class="form-check-input" type="checkbox" name="status[<?= $key['id'] ?>][1]" value="Sudah Bayar" <?php if (isset($_POST['status'][$key['id']][1])) echo 'checked'; ?> style="cursor: pointer;">
-                                            </td>
-                                            <td>
-                                                <input class="form-check-input" type="checkbox" name="status[<?= $key['id'] ?>][2]" value="Sudah Bayar" <?php if (isset($_POST['status'][$key['id']][2])) echo 'checked'; ?> style="cursor: pointer;">
-                                            </td>
-                                            <td>
-                                                <input class="form-check-input" type="checkbox" name="status[<?= $key['id'] ?>][3]" value="Sudah Bayar" <?php if (isset($_POST['status'][$key['id']][3])) echo 'checked'; ?> style="cursor: pointer;">
-                                            </td>
-                                            <td>
-                                                <input class="form-check-input" type="checkbox" name="status[<?= $key['id'] ?>][4]" value="Sudah Bayar" <?php if (isset($_POST['status'][$key['id']][4])) echo 'checked'; ?> style="cursor: pointer;">
-                                            </td>
+                                            <?php for ($i = 1; $i <= 4; $i++) { ?>
+                                                <td>
+                                                    <?php
+                                                    $status_key = isset($key['status'][$key['id_siswa']][$i]) ? $key['status'][$key['id_siswa']][$i] : '';
+                                                    $checked = $status_key === 'Sudah Bayar' ? 'checked' : '';
+                                                    ?>
+                                                    <input class="form-check-input mx-auto" type="checkbox" name="status[<?= $key['id_siswa'] ?>][<?= $i ?>]" value="Sudah Bayar" <?= $checked ?> style="cursor: pointer;">
+                                                </td>
+                                            <?php } ?>
                                         </tr>
                                     <?php } ?>
-
                                 </tbody>
                             </table>
                             <div class="d-grid gap-5 pt-3">
@@ -140,20 +136,61 @@
                     <div class="" id="formView" style="display: none;">
                         <div class="p-5 m-0">
                             <h4>Pemasukan Lainnya</h4>
-                            <form class="user">
+                            <form method="POST" action="pemasukan" class="user">
                                 <div class="form-group pb-3 ">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Nominal">
+                                    <input type="date" name="tanggal_lainnya" class="form-control form-control-user" value="<?= date('Y-m-d'); ?>" id="exampleInputEmail" placeholder="">
                                 </div>
                                 <div class="form-group pb-3 ">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Keterangan">
+                                    <input type="text" name="nominal_lainnya" class="form-control form-control-user" id="exampleInputEmail" placeholder="Nominal">
+                                </div>
+                                <div class="form-group pb-3 ">
+                                    <input type="text" name="keterangan_lainnya" class="form-control form-control-user" id="exampleInputEmail" placeholder="Keterangan">
                                 </div>
                                 <div class="d-grid gap-5 pt-3">
-                                    <button class="btn btn-primary" type="button">Update</button>
+                                    <button class="btn btn-primary" type="submit">Update</button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+
+
+                    <div class="container mt-4">
+                        <div class="table p-3" style="background-color: #fff;">
+                            <h4 class="p-2 m-0">Riwayat Pemasukan</h4>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Tanggal</th>
+                                                <th>Nominal</th>
+                                                <th>Keterangan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($data['pemasukan'] as $masuk) : ?>
+                                                <tr>
+                                                    <td><?= date('d F Y', strtotime($masuk['tanggal'])) ?></td>
+                                                    <td><?= 'Rp.' . number_format($masuk['nominal'], 0, ',', '.') ?></td>
+                                                    <td><?= $masuk['keterangan'] ?></td>
+                                                </tr>
+                                            <?php endforeach ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- <script>
+        // Fungsi untuk mengatur opsi bulan aktif sesuai dengan bulan saat ini
+        document.addEventListener('DOMContentLoaded', function () {
+            const bulanSelect = document.getElementById('floatingSelect');
+            const bulanSekarang = new Date().getMonth(); // Mendapatkan bulan saat ini (0 - 11)
+            bulanSelect.selectedIndex = bulanSekarang + 1; // Indeks dimulai dari 1 karena ada opsi "Open this select Month"
+        });
+    </script> -->

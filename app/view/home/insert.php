@@ -59,38 +59,58 @@
                     <div class="container mt-4 p-2" id="manual" style="max-width: 75%;">
                         <h4>Tambah Member</h4>
                         <form method="post" action="admin">
-                            <div class="mb-3">
+                            <div class="form-group mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Nama</label>
                                 <input class="form-control form-control-sm" type="text" name="nama" id="nama" placeholder="nama" aria-label=".form-control-sm example" required>
                             </div>
-                            <div class="mb-3">
+                            <div class="form-group mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Password</label>
                                 <input class="form-control form-control-sm" type="password" name="password" id="password" placeholder="password" aria-label=".form-control-sm example" required>
                             </div>
-                            <div class="mb-3" style="display: none;">
+                            <div class="form-group mb-3" style="display: none;">
                                 <label for="exampleInputPassword1" class="form-label">Level</label>
                                 <select class="form-select" name="level" id="level" aria-label="Floating label select example">
                                     <option value="3">Anggota</option>
                                 </select>
                             </div>
-                            <div class="d-grid gap-5 pt-3">
+                            <div class="form-group d-grid gap-5 pt-3">
                                 <button class="btn btn-primary" type="submit">+ Tambah</button>
                             </div>
                         </form>
                     </div>
 
-                    <div class="" id="import" style="display: none;">
-                        <div class="p-5 m-0">
+                    <div class="p-5 m-0" id="import" style="display: none;">
+                        <div class="">
                             <h4>Import File Excel</h4>
                             <form class="user">
                                 <div class="form-group pb-3 ">
                                     <input type="file" class="form-control form-control-user" id="exampleInputEmail" placeholder="Nominal">
                                 </div>
-                                <div class="d-grid gap-5 pt-3">
-                                    <button class="btn btn-primary" type="button">Update</button>
+                                <div class="form-group d-grid gap-5 pt-3">
+                                    <button class="btn btn-primary" type="button">Unggah</button>
                                 </div>
                             </form>
                         </div>
+                    </div>
+
+
+                    <div class="container mt-4 p-2">
+                        <h4>Daftar Anggota</h4>
+                        <ul class="list-group">
+                            <?php foreach($data['member'] as $member) : ?>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <?= $member['nama'] ?>
+                                    </div>
+                                    <div class="col">
+                                        <button class="btn btn-success tampilModalUbah float-end me-1" data-toggle="modal" data-target="#exampleModal" data-id="">Update</button>
+                                        <a href="" class="btn btn-danger float-end me-1" onclick="return confirm('Yakin ingin menghapus DATA INI ??')">Hapus</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <?php endforeach ?>
+                        </ul>
                     </div>
                 </div>
             </div>

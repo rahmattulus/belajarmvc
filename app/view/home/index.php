@@ -1,4 +1,3 @@
-
 <style>
     body {
         background-color: #D1F6F6;
@@ -152,18 +151,18 @@
         <div class="satu  container-md d-flex justify-content-center align-items-center" style="height: 30vh;">
             <div class="">
                 <p>Saldo</p>
-                <h2>Rp 500.000</h2>
+                <h2>Rp <?= number_format($data['saldo'], 0, ',', '.') ?></h2>
             </div>
         </div>
 
         <div class="dua container-md d-flex justify-content-center align-items-center" style="height: 7vh;">
-            <p>Rp 200.000</p>
-            <p>Dana terpakai bulan ini</p>
+            <p>Rp. <?= number_format($data['pengeluaran']['total_pengeluaran'], 0, ',', '.') ?> Dana terpakai bulan ini</p>
+
         </div>
     </div>
 
 
-    <div class="container p-2" style="min-height: 40vh;">
+    <div class="container p-2" style="height: 45vh; ">
         <!-- Riwayat -->
         <div class="tiga row g-2 justify-content-evenly mx-auto">
             <div class="empat col-md col-12" style="background-color: white; border-radius: 12px;">
@@ -186,7 +185,7 @@
                             <!-- <img src="" alt=""> -->
                             <div class="text-center masuk ">
                                 <h6 class="m-0">Pemasukan</h6>
-                                <p>Rp 500.000</p>
+                                <p>Rp. <?= number_format($data['pemasukan']['total_pemasukan'], 0, ',', '.') ?></p>
                             </div>
                         </td>
                         <td>
@@ -201,15 +200,15 @@
                             </svg>
                             <div class="text-center keluar">
                                 <h6 class="m-0">Pengluaran</h6>
-                                <p>Rp 250.000</p>
+                                <p>Rp. <?= number_format($data['pengeluaran']['total_pengeluaran'], 0, ',', '.') ?></p>
                             </div>
                         </td>
                     </tr>
                 </table>
-                <div class="d-flex justify-content-between mx-auto" id="selisih" style="max-height: 30px;">
+                <!-- <div class="d-flex justify-content-between mx-auto" id="selisih" style="max-height: 30px;">
                     <p class="ms-2" style="color: #7ABAF5;">Selisih</p>
                     <p class="me-2">Rp 250.000</p>
-                </div>
+                </div> -->
             </div>
 
             <!-- list -->
