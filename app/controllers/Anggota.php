@@ -16,4 +16,15 @@ class Anggota extends Controller{
         $this->view("anggota/login", $data);
         $this->view("templates/footer", $data);
     }
+
+    public function delete($id)
+    {
+        if($this->model('Anggota_model')->deleteAnggota($id) >0){
+            header('Location: '. BASEURL . '/anggota');
+            exit;
+        } else {
+            header('Location: ' . BASEURL . '/anggota');
+            exit;
+        }
+    }
 }
